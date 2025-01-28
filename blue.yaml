@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: facebook-blue
+  labels:
+    app: facebook
+    version: blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: facebook
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: facebook
+        version: blue
+    spec:
+      containers:
+      - name: nginx
+        image: srikanth0370/docker:mindcircuit # Blue image
+        ports:
+        - containerPort: 8080

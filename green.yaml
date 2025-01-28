@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: facebook-green
+  labels:
+    app: facebook
+    version: green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: facebook
+      version: green
+  template:
+    metadata:
+      labels:
+        app: facebook
+        version: green
+    spec:
+      containers:
+      - name: nginx
+        image: srikanth0370/docker:webapp1 # Green image
+        ports:
+        - containerPort: 8080
